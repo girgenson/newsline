@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>NewsLine</title>
 </head>
 <body>
-2134234
+
+{% for peace_of_news in news %}
+<h2>{{ peace_of_news.title }}</h2>
+<p>{{ peace_of_news.date }}</p>
+<p>{{ peace_of_news.text }}</p>
+
+{% endfor %}
 </body>
 </html>
