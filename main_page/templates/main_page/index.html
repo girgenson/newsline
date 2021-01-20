@@ -1,20 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>NewsLine</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}NewsLine{% endblock title %}
+
+{% block content %}
 {% load humanize %}
+    <div class="container mt-3">
+        <div class="row my-5">
+            <div class="col-11">
+                {% for peace_of_news in news %}
+                    <div class="p-3">
+                        <h2>{{ peace_of_news.title }}</h2>
+                        <p><small>{{ peace_of_news.date|naturaltime }}</small></p>
+                        <p>{{ peace_of_news.text }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
-{% for peace_of_news in news %}
-<h2>{{ peace_of_news.title }}</h2>
-<!--<p>{{ peace_of_news.date|date:"d M Y H:i" }} | {{ peace_of_news.date|naturaltime }}</p>-->
-<small><p>{{ peace_of_news.date|naturaltime }}</p></small>
-<p>{{ peace_of_news.text }}</p>
-
-{{ obj.timestamp|date:"d-m-Y" }}
-{% endfor %}
-</body>
-</html>
+{% endblock content %}
 

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 
     # Added
     'django.contrib.humanize',
+    'bootstrap4',
 
     # Default
     'django.contrib.admin',
