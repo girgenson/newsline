@@ -5,12 +5,16 @@
     <title>NewsLine</title>
 </head>
 <body>
+{% load humanize %}
 
 {% for peace_of_news in news %}
 <h2>{{ peace_of_news.title }}</h2>
-<p>{{ peace_of_news.date }}</p>
+<!--<p>{{ peace_of_news.date|date:"d M Y H:i" }} | {{ peace_of_news.date|naturaltime }}</p>-->
+<small><p>{{ peace_of_news.date|naturaltime }}</p></small>
 <p>{{ peace_of_news.text }}</p>
 
+{{ obj.timestamp|date:"d-m-Y" }}
 {% endfor %}
 </body>
 </html>
+

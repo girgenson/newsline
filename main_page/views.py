@@ -3,7 +3,7 @@ from . models import PieceOfNews
 
 
 def index(request):
-    news = PieceOfNews.objects.all()
+    news = PieceOfNews.objects.all().order_by('-date')
     context = {'news': news}
     return render(request, 'index.html', context)
 

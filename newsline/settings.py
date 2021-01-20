@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     # Created
     'main_page',
 
+    # Added
+    'django.contrib.humanize',
+
     # Default
     'django.contrib.admin',
     'django.contrib.auth',
@@ -109,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
