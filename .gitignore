@@ -9,3 +9,5 @@ db.sqlite3-journal
 /static
 /.idea
 /venv
+auxx.py
+auxx.html
