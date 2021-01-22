@@ -1,6 +1,16 @@
 from django.shortcuts import render
 from . models import PieceOfNews
 from django.core.paginator import Paginator
+from . forms import PieceOfNewsForm
+
+
+def create_news(request):
+    form = PieceOfNewsForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    context = {'form': form}
+    return render(request, 'create_news.html', context)
+
 
 
 def index(request):
