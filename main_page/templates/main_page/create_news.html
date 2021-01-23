@@ -4,12 +4,13 @@
 
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
+    <form method="POST">
+        {% csrf_token %}
         {% bootstrap_form form %}
 
-<input type="submit" value="Save" />
-</form>
+            <input class="btn btn-sm btn-light" type="submit" value="Submit"
+                   style="color: black;
+            background: linear-gradient(120deg, #87F0C1 0%, #8CDCE3 100%)">
+            </input>
+    </form>
 {% endblock content %}
-
-

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . models import PieceOfNews
 from django.core.paginator import Paginator
 from . forms import PieceOfNewsForm
@@ -6,10 +6,17 @@ from . forms import PieceOfNewsForm
 
 def create_news(request):
     form = PieceOfNewsForm(request.POST or None)
-    if form.is_valid():
-        form.save()
+    if request.method != 'POST':
+        form = PieceOfNewsForm()
+    else:
+        form = PieceOfNewsForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('main_page:index')
+
     context = {'form': form}
     return render(request, 'create_news.html', context)
+
 
 
 

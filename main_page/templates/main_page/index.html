@@ -3,34 +3,45 @@
 {% block title %}NewsLine{% endblock title %}
 {% load humanize %}
 
-{% block content %}
-
-
-
-    {% autopaginate news limit %}
-    {% paginate %}
-
+{% block navbar %}
     <div class="dropdown show" >
-          <a class="btn btn-secondary dropdown-toggle" style="color: black; background: linear-gradient(120deg, #87F0C1 0%, #8CDCE3 100%)" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="btn btn-secondary dropdown-toggle" style="color: black;
+            background: linear-gradient(120deg, #87F0C1 0%, #8CDCE3 100%)"
+            href="#" role="button" id="dropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             News per page
-          </a>
+        </a>
 
-          <div class="dropdown-menu " style="color: black; background: #eafef1" aria-labelledby="dropdownMenuLink" >
+        <div class="dropdown-menu " style="color: black; background: #eafef1" aria-labelledby="dropdownMenuLink" >
                 <a class="dropdown-item" href="?limit=10">10</a>
                 <a class="dropdown-item" href="?limit=20">20</a>
                 <a class="dropdown-item" href="?limit=50">50</a>
-          </div>
+        </div>
+
     </div>
 
+    <ul>
+        {% autopaginate news limit %}
+        {% paginate %}
+    </ul>
+{% endblock navbar %}
+
+
+
+
+{% block content %}
 <!--
-Debug:
+Debug output:
                 <p>News overall {{ paginator.count }}</p>
                 <p>Number of pages {{ paginator.num_pages }}</p>
                 <p>Page range {{ paginator.page_range }}</p>
 -->
-    <div class="container mt-3">
-        <div class="row my-5">
-            <div class="col-11">
+<div class="float-xl-left">
+
+
+</div>
+    </div>
+</div>
                     {% for peace_of_news in news %}
                         <div class="p-3">
                             <h2>{{ peace_of_news.title }}</h2>
@@ -39,7 +50,8 @@ Debug:
                                 <div class="mx-auto">
 
                                         <a class="btn btn-sm btn-light" style="background-color: #f6f6f6; color: grey; outline-color: gray;" href="{% url 'main_page:create_news' %}"
-                                           role="button">Add fresh news &raquo;</a>
+                                           role="button">Add fresh news &raquo;
+                                        </a>
 
                               </div>
                         </div>
@@ -69,7 +81,7 @@ Debug:
         </div>
 
     </div>
-
+</div>
 
 
 {% endblock content %}
