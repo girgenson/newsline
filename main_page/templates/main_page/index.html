@@ -4,125 +4,42 @@
 {% load humanize %}
 
 {% block navbar %}
-    <div class="dropdown show" >
-        <a class="btn btn-secondary dropdown-toggle" style="color: black;
-            background: linear-gradient(120deg, #87F0C1 0%, #8CDCE3 100%)"
-            href="#" role="button" id="dropdownMenuLink"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            News per page
-        </a>
-
-        <div class="dropdown-menu " style="color: black; background: #eafef1" aria-labelledby="dropdownMenuLink" >
-                <a class="dropdown-item" href="?limit=10">10</a>
-                <a class="dropdown-item" href="?limit=20">20</a>
-                <a class="dropdown-item" href="?limit=50">50</a>
-        </div>
-
-    </div>
 
 
 {% endblock navbar %}
 
 
 
-{# ####################################### #}
 {% block content %}
 
-{% for news in news_obj %}
-    {{ news.title|upper }}<br>
+{% include 'pagination.html' %}
 
+
+{# Outline of news #}
+{% for peace_of_news in news_obj %}
+    <div class="p-3">
+        <h2>{{ peace_of_news.title }}</h2>
+        <p><small>{{ peace_of_news.date|naturaltime }} | {{ peace_of_news.date|date:"d M Y H:i" }}</small></p>
+        <p>{{ peace_of_news.text }}</p>
+            <div class="mx-auto">
+
+                    <a class="btn btn-sm btn-light" style="background-color: #f6f6f6; color: grey; outline-color: gray;" href="{% url 'main_page:create_news' %}"
+                       role="button">Add fresh news &raquo;
+                    </a>
+
+          </div>
+    </div>
+{% empty %}
+<a class="btn btn-sm btn-secondary" style="background-color: #f6f6f6; color: grey; outline-color: gray;" href="{% url 'main_page:create_news' %}"
+                       role="button">Add fresh news &raquo;</a>
 {% endfor %}
 
-{% if news_obj.has_other_pages %}
-  <ul class="pagination">
-    {% if news_obj.has_previous %}
-      <li class="page-item"><a class="page-link" href="?page={{ news_obj.previous_page_number }}&limit={{ limit }}">&laquo;</a></li>
-    {% else %}
-      <li class="page-item disabled"><a class="page-link"><span>&laquo;</span></a></li>
-    {% endif %}
-    {% for i in news_obj.paginator.page_range %}
-      {% if news_obj.number == i %}
-      <li class="page-item"><a class="page-link" style="color: black;
-                   background: linear-gradient(120deg, #87F0C1 0%, #8CDCE3 100%)"><span>{{ i }} <span class="sr-only">(current)</span></span></a></li>
-      {% else %}
-        <li class="page-item"><a class="page-link" href="?page={{ i }}&limit={{ limit }}">{{ i }}</a></li>
-      {% endif %}
-    {% endfor %}
-    {% if news_obj.has_next %}
-      <li class="page-item"><a class="page-link" href="?page={{ news_obj.next_page_number }}&limit={{ limit }}">&raquo;</a></li>
-    {% else %}
-      <li class="page-item disabled"><a class="page-link"><span>&raquo;</span></a></li>
-    {% endif %}
-  </ul>
-{% endif %}
 
-<!--
-Debug output:
-                <p>News overall {{ paginator.count }}</p>
-                <p>Number of pages {{ paginator.num_pages }}</p>
-                <p>Page range {{ paginator.page_range }}</p>
--->
-
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
-<button class="btn btn-sm btn-light" style="color: black;
-                   background: linear-gradient(120deg, #87F0C1 0%, #8CDCE3 100%)">
-            {% autopaginate news limit %}
-            {% paginate %}
-</button>
+    {% include 'pagination.html' %}
+<div id="end"></div>
 
 
 
-</div>
-    </div>
-</div>
-                    {% for peace_of_news in news %}
-                        <div class="p-3">
-                            <h2>{{ peace_of_news.title }}</h2>
-                            <p><small>{{ peace_of_news.date|naturaltime }} | {{ peace_of_news.date|date:"d M Y H:i" }}</small></p>
-                            <p>{{ peace_of_news.text }}</p>
-                                <div class="mx-auto">
-
-                                        <a class="btn btn-sm btn-light" style="background-color: #f6f6f6; color: grey; outline-color: gray;" href="{% url 'main_page:create_news' %}"
-                                           role="button">Add fresh news &raquo;
-                                        </a>
-
-                              </div>
-                        </div>
-                    {% empty %}
-                    <a class="btn btn-sm btn-secondary" style="background-color: #f6f6f6; color: grey; outline-color: gray;" href="{% url 'main_page:create_news' %}"
-                                           role="button">Add fresh news &raquo;</a>
-                    {% endfor %}
-
-
-
-    {% autopaginate news limit %}
-    {% paginate %}
-
-        <div class="dropdown show" >
-  <a class="btn btn-secondary dropdown-toggle" style="color: black; background: linear-gradient(120deg, #86F4BA 0%, #87EEC4 100%)" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    News per page
-  </a>
-
-  <div class="dropdown-menu "  aria-labelledby="dropdownMenuLink" >
-    <a class="dropdown-item" href="?limit=10">10</a>
-    <a class="dropdown-item" href="?limit=20">20</a>
-    <a class="dropdown-item" href="?limit=50">50</a>
-  </div>
-</div>
-
-           </div>
-        </div>
-
-    </div>
-</div>
 
 
 {% endblock content %}
