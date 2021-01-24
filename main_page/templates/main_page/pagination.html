@@ -1,7 +1,7 @@
-{% if news_obj.has_other_pages %}
+{# if news_obj.has_other_pages #}
     <div>
         <ul class="pagination">
-            {# Dropdown news per page #}
+            {# Dropdown menu #}
                 <li style="z-index: 91;">
                     <div class="dropdown show" >
                         <a class="btn btn-secondary dropdown-toggle" style="color: black;
@@ -19,6 +19,7 @@
                         </div>
                     </div>
                 </li>
+
             {# Buttons of pagination #}
             {% if news_obj.has_previous %}
                 <li class="page-item"><a class="page-link" style="background: #e0fff5" href="?page={{ news_obj.previous_page_number }}&limit={{ limit }}">&laquo;</a></li>
@@ -41,4 +42,4 @@
         </ul>
     </div>
 
-{% endif %}
+{# endif #}

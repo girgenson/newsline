@@ -18,9 +18,8 @@ def create_news(request):
     return render(request, 'create_news.html', context)
 
 
-
-
 def index(request):
+    """Pagination processing"""
     limit = request.GET.get('limit', 10)
     news = PieceOfNews.objects.all().order_by('-date')
     paginator = Paginator(news, limit)

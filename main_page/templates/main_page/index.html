@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}NewsLine{% endblock title %}
 {% load humanize %}
 
 
-{% block content %}
+{% block title %}
+    NewsLine
+{% endblock title %}
 
+
+{% block content %}
 
     {% include 'pagination.html' %}
 
@@ -26,12 +29,12 @@
               </div>
         </div>
     {% empty %}
-    <a class="btn btn-sm btn-secondary" style="background-color: #f6f6f6; color: grey; outline-color: gray;" href="{% url 'main_page:create_news' %}"
-                           role="button">Add fresh news &raquo;</a>
+        <a class="btn btn-sm btn-secondary"
+            style="background-color: #f6f6f6; color: grey; outline-color: gray;"
+            href="{% url 'main_page:create_news' %}" role="button">
+            Add fresh news &raquo;
+        </a>
     {% endfor %}
-
-
-
 
     {% include 'pagination.html' %}
 
