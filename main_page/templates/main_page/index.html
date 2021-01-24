@@ -20,23 +20,64 @@
 
     </div>
 
-    <ul>
-        {% autopaginate news limit %}
-        {% paginate %}
-    </ul>
+
 {% endblock navbar %}
 
 
 
-
+{# ####################################### #}
 {% block content %}
+
+{% for news in news_obj %}
+    {{ news.title|upper }}<br>
+
+{% endfor %}
+
+{% if news_obj.has_other_pages %}
+  <ul class="pagination">
+    {% if news_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ news_obj.previous_page_number }}&limit={{ limit }}">&laquo;</a></li>
+    {% else %}
+      <li class="page-item disabled"><a class="page-link"><span>&laquo;</span></a></li>
+    {% endif %}
+    {% for i in news_obj.paginator.page_range %}
+      {% if news_obj.number == i %}
+      <li class="page-item"><a class="page-link" style="color: black;
+                   background: linear-gradient(120deg, #87F0C1 0%, #8CDCE3 100%)"><span>{{ i }} <span class="sr-only">(current)</span></span></a></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}&limit={{ limit }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if news_obj.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ news_obj.next_page_number }}&limit={{ limit }}">&raquo;</a></li>
+    {% else %}
+      <li class="page-item disabled"><a class="page-link"><span>&raquo;</span></a></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
 <!--
 Debug output:
                 <p>News overall {{ paginator.count }}</p>
                 <p>Number of pages {{ paginator.num_pages }}</p>
                 <p>Page range {{ paginator.page_range }}</p>
 -->
-<div class="float-xl-left">
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+<button class="btn btn-sm btn-light" style="color: black;
+                   background: linear-gradient(120deg, #87F0C1 0%, #8CDCE3 100%)">
+            {% autopaginate news limit %}
+            {% paginate %}
+</button>
+
 
 
 </div>

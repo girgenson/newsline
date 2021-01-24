@@ -62,6 +62,14 @@
             {% block page_header %}{% endblock page_header %}
         </div>
         <div>
+
+                  <ul class="pagination">
+                        <li class="page-item">
+                           {% block pagination %}{% endblock pagination %}
+                        </li>
+                   </ul>
+
+
             {% block content %}{% endblock content %}
         </div>
     </main>
