@@ -17,13 +17,3 @@ class PieceOfNews(models.Model):
 
     def __str__(self):
         return self.title
-
-
-
-# from django.contrib.humanize.templatetags import humanize
-#
-# class Example(models.Model):
-#     date = models.DateTimeField(auto_now_add=True)
-#
-#     def get_date(self):
-#         return humanize.naturaltime(self.created_at)

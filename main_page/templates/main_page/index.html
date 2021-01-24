@@ -1,46 +1,39 @@
 {% extends 'base.html' %}
-{% load pagination_tags %}
 {% block title %}NewsLine{% endblock title %}
 {% load humanize %}
-
-{% block navbar %}
-
-
-{% endblock navbar %}
-
 
 
 {% block content %}
 
-{% include 'pagination.html' %}
 
+    {% include 'pagination.html' %}
 
-{# Outline of news #}
-{% for peace_of_news in news_obj %}
-    <div class="p-3">
-        <h2>{{ peace_of_news.title }}</h2>
-        <p><small>{{ peace_of_news.date|naturaltime }} | {{ peace_of_news.date|date:"d M Y H:i" }}</small></p>
-        <p>{{ peace_of_news.text }}</p>
-            <div class="mx-auto">
+    {# Outline of news #}
+    {% for peace_of_news in news_obj %}
+        <div class="p-3">
+            <h2>{{ peace_of_news.title }}</h2>
+            <p><small>{{ peace_of_news.date|naturaltime }} |
+                {{ peace_of_news.date|date:"d M Y H:i" }}</small></p>
+            <p>{{ peace_of_news.text }}</p>
+                <div class="mx-auto">
 
-                    <a class="btn btn-sm btn-light" style="background-color: #f6f6f6; color: grey; outline-color: gray;" href="{% url 'main_page:create_news' %}"
-                       role="button">Add fresh news &raquo;
+                    <a class="btn btn-sm btn-light" style="background-color:
+                        #f6f6f6; color: grey; outline-color: gray;"
+                        href="{% url 'main_page:create_news' %}"
+                        role="button">Add fresh news &raquo;
                     </a>
 
-          </div>
-    </div>
-{% empty %}
-<a class="btn btn-sm btn-secondary" style="background-color: #f6f6f6; color: grey; outline-color: gray;" href="{% url 'main_page:create_news' %}"
-                       role="button">Add fresh news &raquo;</a>
-{% endfor %}
+              </div>
+        </div>
+    {% empty %}
+    <a class="btn btn-sm btn-secondary" style="background-color: #f6f6f6; color: grey; outline-color: gray;" href="{% url 'main_page:create_news' %}"
+                           role="button">Add fresh news &raquo;</a>
+    {% endfor %}
+
+
 
 
     {% include 'pagination.html' %}
-<div id="end"></div>
-
-
-
-
 
 {% endblock content %}
 

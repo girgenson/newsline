@@ -1,6 +1,6 @@
 {% if news_obj.has_other_pages %}
-    <div style="position: sticky">
-        <ul class="pagination" style="position: s;">
+    <div>
+        <ul class="pagination">
             {# Dropdown news per page #}
                 <li style="z-index: 91;">
                     <div class="dropdown show" >
@@ -38,7 +38,6 @@
             {% else %}
                 <li class="page-item disabled"><a class="page-link"><span>&raquo;</span></a></li>
             {% endif %}
-
         </ul>
     </div>
 
