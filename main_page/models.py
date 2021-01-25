@@ -6,6 +6,7 @@ class PieceOfNews(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+    picture = models.ImageField(upload_to='news', blank=True, null=True)
 
     class Meta:
         ordering = ('date',)

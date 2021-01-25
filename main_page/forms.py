@@ -8,4 +8,5 @@ class PieceOfNewsForm(forms.ModelForm):
         fields = [
             'title',
             'text',
+            'picture'
         ]

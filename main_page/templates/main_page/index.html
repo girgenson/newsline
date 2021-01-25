@@ -18,8 +18,10 @@
             <p><small>{{ peace_of_news.date|naturaltime }} |
                 {{ peace_of_news.date|date:"d M Y H:i" }}</small></p>
             <p>{{ peace_of_news.text }}</p>
+            {% if peace_of_news.picture %}
+                <img src="{{ peace_of_news.picture.url }}">
+            {% endif %}
                 <div class="mx-auto">
-
                     <a class="btn btn-sm btn-light" style="background-color:
                         #f6f6f6; color: grey; outline-color: gray;"
                         href="{% url 'main_page:create_news' %}"
