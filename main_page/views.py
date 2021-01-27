@@ -29,3 +29,8 @@ def index(request):
 
     context = {'limit': limit, 'news_obj': news_obj}
     return render(request, 'index.html', context)
+
+
+def upload(request):
+    context = {}
+    return render(request, 'upload_file.html', context)

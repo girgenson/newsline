@@ -6,4 +6,5 @@ app_name = 'main_page'
 urlpatterns = [
     path('', views.index, name='index'),
     path('create_news', views.create_news, name='create_news'),
+    path('upload-file', views.upload, name='upload'),
 ]
