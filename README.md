@@ -23,7 +23,7 @@ DATABASES = {
 ```
 
 
-In project's folder (for example `D:\newsline>`) create virtual environment 
+In project's folder (e.g. `D:\newsline>`) create virtual environment 
 via command line or analogs.
 ```
 D:\newsline>python -m venv venv
